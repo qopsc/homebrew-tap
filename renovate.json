@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "qopsc/homebrew-tap: no CI workflows, so nothing automerges. Casks/oarlock.rb is bumped by qopsc/oarlock's release workflow; Renovate has no cask manager, so this only keeps the dependency dashboard and would pick up any future GitHub Actions or formulae.",
+  "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
+  "timezone": "UTC",
+  "schedule": ["every weekend"],
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 10,
+  "dependencyDashboard": true,
+  "labels": ["deps"],
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": { "schedule": ["at any time"], "addLabels": ["security"] },
+  "platformAutomerge": false,
+  "packageRules": [
+    {
+      "description": "Majors wait for approval on the dependency dashboard",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    }
+  ]
+}
